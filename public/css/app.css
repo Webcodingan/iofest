@@ -12532,12 +12532,6 @@ video {
 .z-\[-100\] {
   z-index: -100;
 }
-.z-20 {
-  z-index: 20;
-}
-.z-30 {
-  z-index: 30;
-}
 .m-0 {
   margin: 0px;
 }
@@ -12902,14 +12896,6 @@ video {
 .hover\:bg-p-80:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(90 25 106 / var(--tw-bg-opacity));
-}
-.hover\:text-p-30:hover {
-  --tw-text-opacity: 1;
-  color: rgb(217 152 233 / var(--tw-text-opacity));
-}
-.hover\:text-p-20:hover {
-  --tw-text-opacity: 1;
-  color: rgb(230 187 241 / var(--tw-text-opacity));
 }
 .hover\:brightness-200:hover {
   --tw-brightness: brightness(2);
