@@ -42,6 +42,14 @@
                 background-color: #B432D4;
             }
 
+            #carousel {
+                display: flex;
+                justify-content: flex-start;
+            }
+
+            #wrapper {
+                transition: all 0.5s;
+            }
 
         </style>
 
@@ -132,9 +140,17 @@
                     Competition List
                 </h2>
 
-                <div class="overflow-x-scroll w-4/5 py-5 h-max">
+                <div id="carousel" class="overflow-x-hidden w-4/5 py-5 h-max relative">
+                    <div class="absolute z-10 top-48 flex w-full justify-between">
+                        <button class="prev bg-p-60 hover:bg-p-80 duration-200 p-2 rounded-full text-p-100">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+                        </button>
+                        <button class="next bg-p-60 hover:bg-p-80 duration-200 p-2 rounded-full text-p-100">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+                        </button>
+                    </div>
 
-                    <div class="flex flex-row gap-10 justify-center items-center px-10 m-0 w-max">
+                    <div id='wrapper' class="flex flex-row gap-11 items-center px-10 m-0 w-max">
 
                         <div class="carousel-item bg-p-100 rounded-2xl flex flex-col justify-between items-center p-4 hover:scale-110 duration-200 h-96 m-0">
                             <img 
@@ -316,23 +332,58 @@
         </div>
 
 
-        {{--
-        <div>
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+        <script>
+            const carousel = document.querySelector('#carousel');
+            const slider = document.querySelector('#wrapper');
+            const prev = document.querySelector('.prev');
+            const next = document.querySelector('.next');
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div>
-        --}}
+            let direction = -1;
 
+            next.addEventListener('click', () => {
+                if (direction === 1)
+                    slider.appendChild(slider.firstElementChild);
+
+                direction = -1;
+                carousel.style['justify-content'] = 'flex-start';
+                slider.style['transform'] = 'translate(calc(-30vw + 60px))';
+                next.setAttribute('disabled', 'disabled');
+
+                setTimeout(() => {
+                    slider.appendChild(slider.firstElementChild);
+
+                    slider.style['transition'] = 'none';
+                    slider.style['transform'] = 'translate(0)';
+                }, 500)
+
+                setTimeout(() => {
+                    slider.style['transition'] = 'all 500ms';
+                    next.removeAttribute('disabled');
+                }, 600)
+            })
+
+            prev.addEventListener('click', () => {
+                if (direction === -1)
+                    slider.prepend(slider.lastElementChild);
+
+                direction = 1;
+                carousel.style['justify-content'] = 'flex-end';
+                slider.style['transform'] = 'translate(calc(30vw - 60px))';
+                prev.setAttribute('disabled', 'disabled');
+
+                setTimeout(() => {
+                    slider.prepend(slider.lastElementChild);
+
+                    slider.style['transition'] = 'none';
+                    slider.style['transform'] = 'translate(0)';
+                }, 500)
+
+                setTimeout(() => {
+                    slider.style['transition'] = 'all 500ms';
+                    prev.removeAttribute('disabled');
+                }, 600)
+            })
+
+        </script>
     </body>
 </html>
