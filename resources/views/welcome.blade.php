@@ -17,41 +17,41 @@
 
         <!-- Styles -->
         <style>
+            /* Actual CSS */
             body {
                 font-family: 'Inter', sans-serif;
                 color: white;
             }
 
-            .carousel {
-                overflow-x: hidden;
-                max-width: calc(100vw - 100px);
+            .carousel-item {
+                transition: all 200ms;
+                width: calc(30vw - 100px);
+            }
+            
+            .carousel-item button {
+                color: transparent;
+                transition: all 200ms;
             }
 
-            .wrapper {
-                display: grid;
-                grid-auto-flow: column;
-                grid-auto-columns: calc((100% - (1.5rem * (var(--per-view) - 1))) / var(--per-view));
-                grid-gap: 1.5rem;
-                position: relative;
-                left: 0;
-                transition: .3s;
+            .carousel-item:hover button {
+                color: white;
+                background-color: #240A2A;
             }
 
-            .wrapper * {
-                background-color: red;
-                border: solid white 2px;
-                width: 500px;
+            .carousel-item:hover {
+                background-color: #B432D4;
             }
+
 
         </style>
 
     </head>
 
     <body class="bg-p-100 w-screen">
-        <div class="flex gap-20 items-center h-16 bg-db-60 fixed px-8 w-full top-0">
+        <div class="flex gap-20 items-center h-16 bg-db-60 fixed px-8 w-full top-0 z-50">
             <a href="#hero" class="h-full">
                 <img
-                    class="h-full"
+                    class="h-full object-contain"
                     src="{{ asset('frontend/logo.png') }}" 
                     alt="logo"
                 >
@@ -127,17 +127,94 @@
 
 
             <!-- Competition Section -->
-            <div id="competition" class="flex flex-col items-center justify-center gap-20 w-full h-screen">
-                <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight mb-10 border-b pb-2">
+            <div id="competition" class="flex flex-col items-center justify-center gap-0 w-full h-screen">
+                <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight mt-5 border-b pb-2">
                     Competition List
                 </h2>
 
-                <div class="carousel">
-                    <div class="wrapper">
-                        <div>Item 1</div>
-                        <div>Item 2</div>
-                        <div>Item 3</div>
-                        <div>Item 4</div>
+                <div class="overflow-x-scroll w-4/5 py-5 h-max">
+
+                    <div class="flex flex-row gap-10 justify-center items-center px-10 m-0 w-max">
+
+                        <div class="carousel-item bg-p-100 rounded-2xl flex flex-col justify-between items-center p-4 hover:scale-110 duration-200 h-96 m-0">
+                            <img 
+                                class="h-44"
+                                src="{{ asset('frontend/business-case.png') }}" 
+                                alt="Business Case"
+                            >
+                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
+                                Business Case
+                            </h3>
+                            <p class="scroll-m-20 text-md font-medium tracking-tight text-center">
+                                Proposal dan presentasi yang berisi perencanaan bisnis
+                            </p>
+
+                            <a href="{{ url('/home') }}">
+                                <button class="p-3 font-sans font-semibold text-xs rounded-full">
+                                    Daftar Sekarang
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="carousel-item bg-p-100 rounded-2xl flex flex-col items-center justify-between p-4 hover:scale-110 duration-200 h-96 m-0">
+                            <img 
+                                class="h-44"
+                                src="{{ asset('frontend/web-dev.png') }}" 
+                                alt="Web Development"
+                            >
+                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
+                                Web Development
+                            </h3>
+                            <p class="scroll-m-20 text-md font-medium tracking-tight text-center">
+                                Berkompetisi untuk mengembangkan suatu website yang berkaitan dengan tema dan subtema kegiatan I/O Festival 2024
+                            </p>
+
+                            <a href="{{ url('/home') }}">
+                                <button class="p-3 font-sans font-semibold text-xs rounded-full">
+                                    Daftar Sekarang
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="carousel-item bg-p-100 rounded-2xl flex flex-col items-center justify-between p-4 hover:scale-110 duration-200 h-96 m-0">
+                            <img 
+                                class="h-44"
+                                src="{{ asset('frontend/ui-ux.png') }}" 
+                                alt="UI/UX Design"
+                            >
+                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
+                                UI/UX Design
+                            </h3>
+                            <p class="scroll-m-20 text-md font-medium tracking-tight text-center">
+                                Desain antarmuka sistem ataupun produk berbasis Android/IOS yang berorientasi pada kenyamanan dan kemudahan pengguna
+                            </p>
+
+                            <a href="{{ url('/home') }}">
+                                <button class="p-3 font-sans font-semibold text-xs rounded-full">
+                                    Daftar Sekarang
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="carousel-item bg-p-100 rounded-2xl flex flex-col items-center justify-between p-4 hover:scale-110 duration-200 h-96 m-0">
+                            <img 
+                                class="h-44"
+                                src="{{ asset('frontend/game-dev.png') }}" 
+                                alt="Game Development"
+                            >
+                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
+                                Game Development
+                            </h3>
+                            <p class="scroll-m-20 text-md font-medium tracking-tight text-center">
+                                Berkompetisi dan pengembangan berinovasi industri game yang berkaitan dengan tema dan subtema kegiatan I/O Festival 2024
+                            </p>
+
+                            <a href="{{ url('/home') }}">
+                                <button class="p-3 font-sans font-semibold text-xs rounded-full">
+                                    Daftar Sekarang
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -228,9 +305,13 @@
                             alt="logo"
                         >
                     </div>
+
                 </div>
 
             </div>
+            <h3 class="scroll-m-20 text-xl font-semibold tracking-tight text-center mt-5">
+                © IO Fest 2024. All Rights Reserved.
+            </h3>
 
         </div>
 
@@ -253,36 +334,5 @@
         </div>
         --}}
 
-        <script>
-            const wrapper = document.querySelector('.wrapper');
-            const items = document.querySelectorAll('.wrapper > *');
-            const perView = 3;
-            let totalScroll = 0;
-            const delay = 2000;
-
-            wrapper.style.setProperty('--per-view', perView)
-
-            for (let i = 0; i < perView; i++) {
-                wrapper.insertAdjacentHTML('beforeend', items[i].outerHTML);
-            }
-
-            let autoScroll = setInterval(scrolling, delay)
-
-            function scrolling() {
-                totalScroll++
-
-                if(totalScroll == items.length + 1) {
-                    clearInterval(autoScroll)
-                    totalScroll = 1
-                    wrapper.style.transition = '0s'
-                    wrapper.style.left = '0'
-                    autoScroll = setInterval(scrolling, delay)
-                }
-
-                const widthEl = document.querySelector('.wrapper > :first-child').offsetWidth + 24
-                wrapper.style.left = `-${totalScroll * widthEl}px`
-                wrapper.style.transition = '.3s'
-            }
-        </script>
     </body>
 </html>

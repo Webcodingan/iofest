@@ -44,7 +44,9 @@ module.exports = {
                 100: '#240A2A',
             }
         },
-        extend: {},
+        extend: {
+            backgroundColor: ['hover']
+        },
     },
     plugins: [],
 }
