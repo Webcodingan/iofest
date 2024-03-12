@@ -4,11 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>IO Fest</title>
 
 
         <!-- TailwindCSS -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+        <!-- Favicons -->
+        <link href="{{ asset('frontend/icon.png') }}" rel="icon">
 
         <!-- Inter Font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +30,7 @@
                 transition: all 200ms;
                 width: calc(30vw - 100px);
             }
-            
+
             .carousel-item button {
                 color: transparent;
                 transition: all 200ms;
@@ -55,12 +58,12 @@
 
     </head>
 
-    <body class="bg-p-100 w-screen">
+    <body class="bg-p-100 w-screen overflow-x-hidden">
         <div class="flex gap-20 items-center h-16 bg-db-60 fixed px-8 w-full top-0 z-50">
             <a href="#hero" class="h-full">
                 <img
                     class="h-full object-contain"
-                    src="{{ asset('frontend/logo.png') }}" 
+                    src="{{ asset('frontend/logo.png') }}"
                     alt="logo"
                 >
             </a>
@@ -72,24 +75,24 @@
             </ul>
 
             <a href="{{ url('/home') }}">
-                <button class="bg-p-base hover:bg-p-60 active:bg-p-70 py-2 px-4 text-white font-sans font-semibold text-md rounded-full">
+                <button class="bg-p-base hover:bg-p-60 active:bg-p-70 py-2 px-4 text-white font-sans font-semibold text-md rounded-full duration-300">
                     Login
                 </button>
             </a>
         </div>
 
         <div class="w-full h-auto">
-            <img 
+            <img
                 class="object-cover w-full h-full fixed z-[-100] bottom-0"
-                src="{{ asset('/frontend/bg.png') }}" 
+                src="{{ asset('/frontend/bg.png') }}"
                 alt="background-image"
             >
 
             <!-- Hero Section -->
             <div id="hero" class="flex items-center justify-center gap-20 w-full h-screen">
-                <img 
+                <img
                     class="w-[450px]"
-                    src="{{ asset('/frontend/logo-big.png') }}" 
+                    src="{{ asset('/frontend/logo-big.png') }}"
                     alt="main-logo"
                 >
                 <div class="flex flex-col items-center">
@@ -101,7 +104,7 @@
                     </h3>
 
                     <a href="{{ url('/home') }}">
-                        <button class="bg-p-base hover:bg-p-60 active:bg-p-70 py-2 px-4 text-white font-extrabold text-md rounded-full text-2xl">
+                        <button class="bg-p-base hover:bg-p-60 active:bg-p-70 py-2 px-4 text-white font-extrabold text-md rounded-full text-2xl duration-300">
                             Join Now
                         </button>
                     </a>
@@ -109,8 +112,8 @@
             </div>
 
             <!-- About Section -->
-            <div id="about" class="flex items-center justify-center gap-20 w-full h-screen">
-                <div class="flex flex-col">
+            <div id="about" class="flex items-center justify-center gap-20 w-full py-10">
+                <div class="flex flex-col border-1 p-4 rounded-xl backdrop-blur-lg hover:backdrop-blur-2xl duration-500">
                     <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight mb-10">
                         What is IO Fest?
                     </h2>
@@ -126,16 +129,16 @@
                     </ul>
                 </div>
 
-                <img 
+                <img
                     class="w-[450px]"
-                    src="{{ asset('/frontend/what-is-io.png') }}" 
+                    src="{{ asset('/frontend/what-is-io.png') }}"
                     alt="main-logo"
                 >
             </div>
 
 
             <!-- Competition Section -->
-            <div id="competition" class="flex flex-col items-center justify-center gap-0 w-full h-screen">
+            <div id="competition" class="flex flex-col items-center justify-center gap-0 w-full py-10">
                 <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight mt-5 border-b pb-2">
                     Competition List
                 </h2>
@@ -153,13 +156,13 @@
                     <div id='wrapper' class="flex flex-row gap-11 items-center px-10 m-0 w-max">
 
                         <div class="carousel-item bg-p-100 rounded-2xl flex flex-col justify-between items-center p-4 hover:scale-110 duration-200 h-96 m-0">
-                            <img 
+                            <img
                                 class="h-44"
-                                src="{{ asset('frontend/business-case.png') }}" 
-                                alt="Business Case"
+                                src="{{ asset('frontend/business-case.png') }}"
+                                alt="Business Plan"
                             >
                             <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
-                                Business Case
+                                Business Plan
                             </h3>
                             <p class="scroll-m-20 text-md font-medium tracking-tight text-center">
                                 Proposal dan presentasi yang berisi perencanaan bisnis
@@ -167,15 +170,15 @@
 
                             <a href="{{ url('/home') }}">
                                 <button class="p-3 font-sans font-semibold text-xs rounded-full">
-                                    Daftar Sekarang
+                                    Lebih Lanjut
                                 </button>
                             </a>
                         </div>
 
                         <div class="carousel-item bg-p-100 rounded-2xl flex flex-col items-center justify-between p-4 hover:scale-110 duration-200 h-96 m-0">
-                            <img 
+                            <img
                                 class="h-44"
-                                src="{{ asset('frontend/web-dev.png') }}" 
+                                src="{{ asset('frontend/web-dev.png') }}"
                                 alt="Web Development"
                             >
                             <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
@@ -187,15 +190,15 @@
 
                             <a href="{{ url('/home') }}">
                                 <button class="p-3 font-sans font-semibold text-xs rounded-full">
-                                    Daftar Sekarang
+                                    Lebih Lanjut
                                 </button>
                             </a>
                         </div>
 
                         <div class="carousel-item bg-p-100 rounded-2xl flex flex-col items-center justify-between p-4 hover:scale-110 duration-200 h-96 m-0">
-                            <img 
+                            <img
                                 class="h-44"
-                                src="{{ asset('frontend/ui-ux.png') }}" 
+                                src="{{ asset('frontend/ui-ux.png') }}"
                                 alt="UI/UX Design"
                             >
                             <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
@@ -207,15 +210,15 @@
 
                             <a href="{{ url('/home') }}">
                                 <button class="p-3 font-sans font-semibold text-xs rounded-full">
-                                    Daftar Sekarang
+                                    Lebih Lanjut
                                 </button>
                             </a>
                         </div>
 
                         <div class="carousel-item bg-p-100 rounded-2xl flex flex-col items-center justify-between p-4 hover:scale-110 duration-200 h-96 m-0">
-                            <img 
+                            <img
                                 class="h-44"
-                                src="{{ asset('frontend/game-dev.png') }}" 
+                                src="{{ asset('frontend/game-dev.png') }}"
                                 alt="Game Development"
                             >
                             <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
@@ -227,7 +230,7 @@
 
                             <a href="{{ url('/home') }}">
                                 <button class="p-3 font-sans font-semibold text-xs rounded-full">
-                                    Daftar Sekarang
+                                    Lebih Lanjut
                                 </button>
                             </a>
                         </div>
@@ -244,10 +247,54 @@
             </div>
 
             <!-- Talk Show Section -->
-            <div id="talks" class="flex flex-col items-center justify-center gap-20 w-full h-screen">
-                <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight mb-10 border-b pb-2">
+            <div id="talks" class="flex flex-col items-center justify-center gap-10 w-full h-screen px-52">
+                <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight border-b pb-2">
                     Talk Show List
                 </h2>
+
+                <div class="flex gap-20 w-full justify-center px-12">
+                    <div class="flex flex-col items-center p-4 backdrop-blur-xl hover:backdrop-blur-3xl duration-500 rounded-lg border-1 flex-1">
+                        <img
+                            class="w-auto"
+                            src="{{ asset('/frontend/talkshow1.jpg') }}"
+                            alt="main-logo"
+                        >
+                        <h3 class="mb-2 text-2xl font-semibold tracking-tight">
+                            Business Talkshow
+                        </h3>
+
+                        <div>
+                            <h4 class="scroll-m-20 text-lg font-semibold tracking-tight">
+                                Date: 29 April 2024
+                            </h4>
+                            <h4 class="scroll-m-20 text-lg font-semibold tracking-tight">
+                                Guest: Michelle Monrow & Daniel Johnson
+                            </h4>
+                        </div>
+                    </div>
+
+
+                    <div class="flex flex-col items-center p-4 backdrop-blur-xl hover:backdrop-blur-3xl duration-500 rounded-lg border-1 flex-1">
+                        <img
+                            class="w-auto"
+                            src="{{ asset('/frontend/talkshow2.jpg') }}"
+                            alt="main-logo"
+                        >
+                        <h3 class="mb-2 text-2xl font-semibold tracking-tight">
+                            Indo Comptech
+                        </h3>
+
+                        <div>
+                            <h4 class="scroll-m-20 text-lg font-semibold tracking-tight">
+                                Date: 29 April 2024
+                            </h4>
+                            <h4 class="scroll-m-20 text-lg font-semibold tracking-tight">
+                                Guest: Bill Gates
+                            </h4>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
@@ -259,7 +306,7 @@
                     <a href="#hero">
                         <img
                             class="h-24"
-                            src="{{ asset('frontend/logo.png') }}" 
+                            src="{{ asset('frontend/logo.png') }}"
                             alt="logo"
                         >
                     </a>
@@ -312,12 +359,12 @@
                     <div class="flex gap-10">
                         <img
                             class="h-12"
-                            src="{{ asset('frontend/footer-fti.png') }}" 
+                            src="{{ asset('frontend/footer-fti.png') }}"
                             alt="logo"
                         >
                         <img
                             class="h-12"
-                            src="{{ asset('frontend/footer-bem.png') }}" 
+                            src="{{ asset('frontend/footer-bem.png') }}"
                             alt="logo"
                         >
                     </div>

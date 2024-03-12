@@ -9,40 +9,105 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <!-- TailwindCSS -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Favicons -->
-    <link href="{{ asset('backend/assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('backend/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('frontend/icon.png') }}" rel="icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('backend/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <!-- Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: white;
+        }
+    </style>
 
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-    {{-- Icon font awesome --}}
-    <script src="https://kit.fontawesome.com/59bd5f9969.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="bg-p-100 w-screen overflow-x-hidden">
+    <img
+        class="object-cover w-full h-full fixed z-[-100] bottom-0"
+        src="{{ asset('/frontend/bg.png') }}"
+        alt="background-image"
+    >
+    <main class="flex gap-10 justify-center p-20 items-center">
+        <img
+            class="w-[450px]"
+            src="{{ asset('/auth/logo-text.png') }}"
+            alt="IO Fest Icon"
+        >
+        <div class="py-8 px-12 duration-500 hover:backdrop-blur bg-white bg-opacity-10 text-white">
+            <h3 class="scroll-m-20 text-3xl font-semibold tracking-tight">
+                Login
+            </h3>
 
-    <main>
-        <div class="container">
+            <p>Glad you're back.</p>
 
+            <form 
+                class="flex flex-col gap-2"
+                novalidate 
+                action="{{ route('login') }}"
+                method="POST">
+                @csrf
+                <div>
+                    <input 
+                        class="bg-white bg-opacity-10 font-bold text-white py-1 px-2 w-full focus:outline-none "
+                        type="email" 
+                        name="email"
+                        placeholder="Email Address" 
+                        required
+                    >
+                </div>
+
+                <div>
+                    <input 
+                        class="bg-white bg-opacity-10 font-bold text-white py-1 px-2 w-full focus:outline-none "
+                        type="password" 
+                        name="password"
+                        placeholder="Password" 
+                        required
+                    >
+                </div>
+
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember"
+                            value="true" id="remember"
+                            {{ old('remember') ? 'checked' : '' }}>
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary w-100" type="submit">Login</button>
+                </div>
+                <div class="col-12">
+                    <div class="text-center">
+                        <p class="small mb-0 text-center">~ or ~</p>
+
+                        <a href="#" style="text-decoration: none; margin-right:10px">
+                            <button class="btn btn-danger">
+                                <i class="fab fa-google"></i> Google
+                            </button>
+                        </a>
+                        <a href="#" style="text-decoration: none;">
+                            <button class="btn btn-primary">
+                                <i class="fab fa-github"></i> Github
+                            </button>
+                        </a>
+                        <p class="small mt-3">Don't have account? <a href="/register">Create
+                                an
+                                account</a></p>
+                    </div>
+                </div>
+            </form>
+
+            <!--
             <section
                 class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
@@ -54,7 +119,7 @@
                                     <img src="{{ asset('backend/assets/img/logo.png') }}" alt="">
                                     <span class="d-none d-lg-block">I/O Fest</span>
                                 </a>
-                            </div><!-- End Logo -->
+                            </div>
 
                             <div class="card mb-3">
 
@@ -135,22 +200,10 @@
                     </div>
                 </div>
             </section>
+        -->
 
         </div>
     </main><!-- End #main -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('backend/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/chart.js/chart.umd.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/echarts/echarts.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/quill/quill.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/php-email-form/validate.js') }}"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
