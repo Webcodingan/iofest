@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pages | Login</title>
+    <title>Login</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -30,183 +30,161 @@
 
 </head>
 
-<body class="bg-p-100 w-screen overflow-x-hidden">
+<body class="bg-db-100 h-screen w-screen overflow-hidden">
     <img
-        class="object-cover w-full h-full fixed z-[-100] bottom-0"
+        class="object-cover w-full h-full fixed z-[-100] bottom-0 shrink"
         src="{{ asset('/frontend/bg.png') }}"
         alt="background-image"
     >
-    <main class="flex gap-10 justify-center p-20 items-center">
-        <img
-            class="w-[450px]"
-            src="{{ asset('/auth/logo-text.png') }}"
-            alt="IO Fest Icon"
-        >
-        <div class="py-8 px-12 duration-500 hover:backdrop-blur bg-white bg-opacity-10 text-white">
-            <h3 class="scroll-m-20 text-3xl font-semibold tracking-tight">
+    <main class="h-full flex gap-5 sm:gap-24 justify-center py-20 px-10 sm:px-44 items-center">
+        <a href="/">
+            <img
+                class="w-[450px] flex-1 hidden lg:block"
+                src="{{ asset('/auth/logo-text.png') }}"
+                alt="IO Fest Icon"
+            >
+        </a>
+
+        <div class="py-10 px-12 duration-500 hover:backdrop-blur bg-white bg-opacity-10 text-white grow max-w-[450px] shrink-0">
+            <h3 class="scroll-m-20 text-3xl font-black tracking-tight">
                 Login
             </h3>
 
-            <p>Glad you're back.</p>
+            <p class="mb-3">Glad you're back.</p>
 
-            <form 
+            <form
                 class="flex flex-col gap-2"
-                novalidate 
+                novalidate
                 action="{{ route('login') }}"
                 method="POST">
                 @csrf
                 <div>
-                    <input 
+                    <input
                         class="bg-white bg-opacity-10 font-bold text-white py-1 px-2 w-full focus:outline-none "
-                        type="email" 
+                        type="email"
                         name="email"
-                        placeholder="Email Address" 
-                        required
+                        placeholder="Email Address"
+                        pattern="^\S+@\S+\.\S+$"
+                        value=""
                     >
                 </div>
 
                 <div>
-                    <input 
+                    <input
                         class="bg-white bg-opacity-10 font-bold text-white py-1 px-2 w-full focus:outline-none "
-                        type="password" 
+                        type="password"
                         name="password"
-                        placeholder="Password" 
-                        required
+                        placeholder="Password"
+                        value=""
                     >
                 </div>
 
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember"
-                            value="true" id="remember"
-                            {{ old('remember') ? 'checked' : '' }}>
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="remember"
+                        value="true"
+                        id="remember"
+                        {{ old('remember') ? 'checked' : '' }}>
+                    <label
+                        class="form-check-label font-semibold"
+                        for="remember"
+                    >
+                        Remember me
+                    </label>
                 </div>
-                <div class="col-12">
-                    <button class="btn btn-primary w-100" type="submit">Login</button>
-                </div>
-                <div class="col-12">
-                    <div class="text-center">
-                        <p class="small mb-0 text-center">~ or ~</p>
 
-                        <a href="#" style="text-decoration: none; margin-right:10px">
-                            <button class="btn btn-danger">
-                                <i class="fab fa-google"></i> Google
-                            </button>
+                <button
+                    class="login-btn rounded-lg bg-b-vibrant p-2 font-semibold hover:bg-opacity-70 active:bg-opacity-60 duration-300 disabled:bg-b-30"
+                    type="submit"
+                    disabled
+                >
+                    Login
+                </button>
+
+                <a class="font-semibold self-center" href='#'>
+                    Forgot password?
+                </a>
+
+                <div class="flex flex-col gap-2 items-center">
+                    <div class="flex items-center gap-4 self-stretch">
+                        <div class="border-2 rounded-lg flex-1"></div>
+                        <p class="text-xl font-semibold tracking-tight">
+                            Or
+                        </p>
+                        <div class="border-2 rounded-lg flex-1"></div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <a href="#">
+                            <svg class="w-12 hover:scale-110 duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                <path d="M1 1h22v22H1z" fill="none"/>
+                            </svg>
                         </a>
-                        <a href="#" style="text-decoration: none;">
-                            <button class="btn btn-primary">
-                                <i class="fab fa-github"></i> Github
-                            </button>
+
+                        <a href="#">
+                            <svg class="w-12 hover:scale-110 duration-300"
+                                xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50">
+                                <path d="M17.791,46.836C18.502,46.53,19,45.823,19,45v-5.4c0-0.197,0.016-0.402,0.041-0.61C19.027,38.994,19.014,38.997,19,39 c0,0-3,0-3.6,0c-1.5,0-2.8-0.6-3.4-1.8c-0.7-1.3-1-3.5-2.8-4.7C8.9,32.3,9.1,32,9.7,32c0.6,0.1,1.9,0.9,2.7,2c0.9,1.1,1.8,2,3.4,2 c2.487,0,3.82-0.125,4.622-0.555C21.356,34.056,22.649,33,24,33v-0.025c-5.668-0.182-9.289-2.066-10.975-4.975 c-3.665,0.042-6.856,0.405-8.677,0.707c-0.058-0.327-0.108-0.656-0.151-0.987c1.797-0.296,4.843-0.647,8.345-0.714 c-0.112-0.276-0.209-0.559-0.291-0.849c-3.511-0.178-6.541-0.039-8.187,0.097c-0.02-0.332-0.047-0.663-0.051-0.999 c1.649-0.135,4.597-0.27,8.018-0.111c-0.079-0.5-0.13-1.011-0.13-1.543c0-1.7,0.6-3.5,1.7-5c-0.5-1.7-1.2-5.3,0.2-6.6 c2.7,0,4.6,1.3,5.5,2.1C21,13.4,22.9,13,25,13s4,0.4,5.6,1.1c0.9-0.8,2.8-2.1,5.5-2.1c1.5,1.4,0.7,5,0.2,6.6c1.1,1.5,1.7,3.2,1.6,5 c0,0.484-0.045,0.951-0.11,1.409c3.499-0.172,6.527-0.034,8.204,0.102c-0.002,0.337-0.033,0.666-0.051,0.999 c-1.671-0.138-4.775-0.28-8.359-0.089c-0.089,0.336-0.197,0.663-0.325,0.98c3.546,0.046,6.665,0.389,8.548,0.689 c-0.043,0.332-0.093,0.661-0.151,0.987c-1.912-0.306-5.171-0.664-8.879-0.682C35.112,30.873,31.557,32.75,26,32.969V33 c2.6,0,5,3.9,5,6.6V45c0,0.823,0.498,1.53,1.209,1.836C41.37,43.804,48,35.164,48,25C48,12.318,37.683,2,25,2S2,12.318,2,25 C2,35.164,8.63,43.804,17.791,46.836z" fill="currentColor"></path>
+                            </svg>
                         </a>
-                        <p class="small mt-3">Don't have account? <a href="/register">Create
-                                an
-                                account</a></p>
+                    </div>
+
+                    <p>
+                        Don't have account?
+                        <a class="font-semibold hover:text-b-10 duration-200" href="/register">
+                            Create an account
+                        </a>
+                    </p>
+
+                    <div class="flex gap-3">
+                        <a class="text-xs duration-200 hover:translate-y-[-2px]" href="#">Terms & Conditions</a>
+                        <a class="text-xs duration-200 hover:translate-y-[-2px]" href="#">Support</a>
+                        <a class="text-xs duration-200 hover:translate-y-[-2px]" href="#">Customer Care</a>
                     </div>
                 </div>
+
             </form>
 
-            <!--
-            <section
-                class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-
-                            <div class="d-flex justify-content-center py-4">
-                                <a href="{{ route('login') }}" class="logo d-flex align-items-center w-auto">
-                                    <img src="{{ asset('backend/assets/img/logo.png') }}" alt="">
-                                    <span class="d-none d-lg-block">I/O Fest</span>
-                                </a>
-                            </div>
-
-                            <div class="card mb-3">
-
-                                <div class="card-body">
-
-                                    <div class="pt-1 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                    </div>
-
-                                    <form class="row g-3 needs-validation" novalidate action="{{ route('login') }}"
-                                        method="POST">
-                                        @csrf
-                                        <div class="col-12">
-                                            <label for="email" class="form-label">Email</label>
-                                            <div class="input-group has-validation">
-                                                <span class="input-group-text" id="email">@</span>
-                                                <input type="text" name="email"
-                                                    class="form-control form-control @error('email') is-invalid @enderror"
-                                                    placeholder="Enter your email address..." id="email"
-                                                    value="{{ old('email') }}"required>
-                                                <div class="invalid-feedback">Please enter your email.</div>
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password" name="password"
-                                                class="form-control form-control
-                                            @error('password') is-invalid @enderror"
-                                                id="password" placeholder="Enter your password..." required>
-                                            <div class="invalid-feedback">Please enter your password!</div>
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remember"
-                                                    value="true" id="remember"
-                                                    {{ old('remember') ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="rememberMe">Remember me</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-primary w-100" type="submit">Login</button>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="text-center">
-                                                <p class="small mb-0 text-center">~ or ~</p>
-
-                                                <a href="#" style="text-decoration: none; margin-right:10px">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fab fa-google"></i> Google
-                                                    </button>
-                                                </a>
-                                                <a href="#" style="text-decoration: none;">
-                                                    <button class="btn btn-primary">
-                                                        <i class="fab fa-github"></i> Github
-                                                    </button>
-                                                </a>
-                                                <p class="small mt-3">Don't have account? <a href="/register">Create
-                                                        an
-                                                        account</a></p>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        -->
-
         </div>
-    </main><!-- End #main -->
+    </main>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
+
+    <!-- Form Validation -->
+    <script>
+        const loginBtn = document.querySelector('.login-btn');
+        const email = document.querySelector('input[name="email"]');
+        const password= document.querySelector('input[name="password"]');
+        loginBtn.disabled = true;
+
+        function setButtonStatus() {
+            console.log("running");
+            const validEmail = email.checkValidity()
+                && email.value !== ''
+                && email !== null;
+
+            const validPassword = password.checkValidity()
+                && password.value !== ''
+                && password.value !== null
+                && password.value.length >= 8;
+
+            if (validEmail && validPassword) {
+                loginBtn.disabled = false;
+            } else {
+                loginBtn.disabled = true;
+            }
+        }
+
+        email.addEventListener('input', setButtonStatus);
+        password.addEventListener('input', setButtonStatus);
+    </script>
 
 </body>
 

@@ -58,7 +58,7 @@
 
     </head>
 
-    <body class="bg-p-100 w-screen overflow-x-hidden">
+    <body class="bg-db-100 w-screen overflow-x-hidden">
         <div class="flex gap-20 items-center h-16 bg-db-60 fixed px-8 w-full top-0 z-50">
             <a href="#hero" class="h-full">
                 <img
@@ -68,10 +68,10 @@
                 >
             </a>
             <ul class="flex items-center flex-1 justify-around font-semibold text-lg">
-                <li class="bg-current duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#about">About</a></li>
-                <li class="bg-current duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#competition">Competition</a></li>
-                <li class="bg-current duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#sponsors">Sponsors</a></li>
-                <li class="bg-current duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#talks">Talk Show</a></li>
+                <li class="duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#about">About</a></li>
+                <li class="duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#competition">Competition</a></li>
+                <li class="duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#sponsors">Sponsors</a></li>
+                <li class="duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#talks">Talk Show</a></li>
             </ul>
 
             <a href="{{ url('/home') }}">
@@ -112,7 +112,7 @@
             </div>
 
             <!-- About Section -->
-            <div id="about" class="flex items-center justify-center gap-20 w-full py-10">
+            <div id="about" class="flex items-center justify-center gap-20 w-full py-16">
                 <div class="flex flex-col border-1 p-4 rounded-xl backdrop-blur-lg hover:backdrop-blur-2xl duration-500">
                     <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight mb-10">
                         What is IO Fest?
