@@ -25,41 +25,13 @@
                 font-family: 'Inter', sans-serif;
                 color: white;
             }
-
-            .carousel-item {
-                transition: all 200ms;
-                width: calc(30vw - 100px);
-            }
-
-            .carousel-item button {
-                color: transparent;
-                transition: all 200ms;
-            }
-
-            .carousel-item:hover button {
-                color: white;
-                background-color: #240A2A;
-            }
-
-            .carousel-item:hover {
-                background-color: #B432D4;
-            }
-
-            #carousel {
-                display: flex;
-                justify-content: flex-start;
-            }
-
-            #wrapper {
-                transition: all 0.5s;
-            }
-
         </style>
 
     </head>
 
     <body class="bg-db-100 w-screen overflow-x-hidden">
-        <div class="flex gap-20 items-center h-16 bg-db-60 fixed px-8 w-full top-0 z-50">
+        <!-- Navbar -->
+        <div class="flex gap-20 items-center h-16 bg-db-60 fixed px-0 justify-center sm:justify-start sm:px-8 w-full top-0 z-50">
             <a href="#hero" class="h-full">
                 <img
                     class="h-full object-contain"
@@ -67,7 +39,7 @@
                     alt="logo"
                 >
             </a>
-            <ul class="flex items-center flex-1 justify-around font-semibold text-lg">
+            <ul class="hidden lg:flex items-center flex-1 justify-around font-semibold text-lg">
                 <li class="duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#about">About</a></li>
                 <li class="duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#competition">Competition</a></li>
                 <li class="duration-200 hover:bg-db-40 py-1 px-3 rounded-full"><a href="#sponsors">Sponsors</a></li>
@@ -81,7 +53,7 @@
             </a>
         </div>
 
-        <div class="w-full h-auto">
+        <div class="w-full h-auto overflow-x-hidden">
             <img
                 class="object-cover w-full h-full fixed z-[-100] bottom-0"
                 src="{{ asset('/frontend/bg.png') }}"
@@ -89,22 +61,22 @@
             >
 
             <!-- Hero Section -->
-            <div id="hero" class="flex items-center justify-center gap-20 w-full h-screen">
+            <div id="hero" class="flex flex-col sm:flex-row pt-10 items-center justify-center gap-0 w-full h-screen">
                 <img
                     class="w-[450px]"
                     src="{{ asset('/frontend/logo-big.png') }}"
                     alt="main-logo"
                 >
                 <div class="flex flex-col items-center">
-                    <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight text-white mb-2">
+                    <h2 class="scroll-m-20 text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
                         TechSphere
                     </h2>
-                    <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight text-white mb-8">
+                    <h3 class="scroll-m-20 text-lg sm:text-2xl text-center font-semibold tracking-tight text-white mb-2 sm:mb-8">
                         Unleash Your Creativity, Expand Your Journey
                     </h3>
 
                     <a href="{{ url('/home') }}">
-                        <button class="bg-p-base hover:bg-p-60 active:bg-p-70 py-2 px-4 text-white font-extrabold text-md rounded-full text-2xl duration-300">
+                        <button class="bg-p-base hover:bg-p-60 active:bg-p-70 py-2 px-4 text-white font-extrabold text-md rounded-full text-lg sm:text-2xl duration-300">
                             Join Now
                         </button>
                     </a>
@@ -114,23 +86,23 @@
             <!-- About Section -->
             <div id="about" class="flex items-center justify-center gap-20 w-full py-16">
                 <div class="flex flex-col border-1 p-4 rounded-xl backdrop-blur-lg hover:backdrop-blur-2xl duration-500">
-                    <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight mb-10">
+                    <h2 class="scroll-m-20 text-2xl sm:text-4xl font-extrabold tracking-tight mb-2 sm:mb-10">
                         What is IO Fest?
                     </h2>
-                    <p class="scroll-m-20 text-xl font-semibold tracking-tight max-w-[40ch] mb-3">
+                    <p class="scroll-m-20 text-base sm:text-xl font-semibold tracking-tight max-w-[40ch] mb-1 sm:mb-3">
                         I/O Festival 2024 merupakan acara terbesar yang diselenggarakan oleh Badan Eksekutif Mahasiswa Fakultas Tekologi Informasi (BEM FTI) Universitas Tarumanagara, dimana pelajar dari berbagai tingkatan, baik universitas maupun SMA/SMK, diundang untuk berkompetisi dalam berbagai bidang lomba, seperti:
                     </p>
 
                     <ul class="ml-6">
-                        <li class="list-disc scroll-m-20 text-xl font-semibold tracking-tight">UI/UX Design</li>
-                        <li class="list-disc scroll-m-20 text-xl font-semibold tracking-tight">Web Development</li>
-                        <li class="list-disc scroll-m-20 text-xl font-semibold tracking-tight">Business Plan</li>
-                        <li class="list-disc scroll-m-20 text-xl font-semibold tracking-tight">Game Development</li>
+                        <li class="list-disc scroll-m-20 text-base sm:text-xl font-semibold tracking-tight">UI/UX Design</li>
+                        <li class="list-disc scroll-m-20 text-base sm:text-xl font-semibold tracking-tight">Web Development</li>
+                        <li class="list-disc scroll-m-20 text-base sm:text-xl font-semibold tracking-tight">Business Plan</li>
+                        <li class="list-disc scroll-m-20 text-base sm:text-xl font-semibold tracking-tight">Game Development</li>
                     </ul>
                 </div>
 
                 <img
-                    class="w-[450px]"
+                    class="w-[450px] hidden lg:block"
                     src="{{ asset('/frontend/what-is-io.png') }}"
                     alt="main-logo"
                 >
@@ -138,136 +110,109 @@
 
 
             <!-- Competition Section -->
-            <div id="competition" class="flex flex-col items-center justify-center gap-0 w-full py-10">
-                <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight mt-5 border-b pb-2">
+            <div id="competition" class="flex flex-col items-center justify-center gap-0 w-full py-2 sm:py-10">
+                <h2 class="scroll-m-20 text-2xl sm:text-4xl font-extrabold tracking-tight mb-2 sm:mb-10 border-b pb-2">
                     Competition List
                 </h2>
 
-                <div id="carousel" class="overflow-x-hidden w-4/5 py-5 h-max relative">
-                    <div class="absolute z-10 top-48 flex w-full justify-between">
-                        <button class="prev bg-p-60 hover:bg-p-80 duration-200 p-2 rounded-full text-p-100">
-                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-                        </button>
-                        <button class="next bg-p-60 hover:bg-p-80 duration-200 p-2 rounded-full text-p-100">
-                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
-                        </button>
-                    </div>
-
-                    <div id='wrapper' class="flex flex-row gap-11 items-center px-10 m-0 w-max">
-
-                        <div class="carousel-item bg-p-100 rounded-2xl flex flex-col justify-between items-center p-4 hover:scale-110 duration-200 h-96 m-0">
+                <div class="grid md:grid-cols-2 md:grid-rows-2 gap-3 sm:px-4 md:px-12 lg:px-64 md:mt-6 grid-flow-row">
+                    <a href="{{ url('/home') }}">
+                        <div class="bg-p-100 rounded-2xl flex flex-col justify-between items-center p-4 hover:scale-110 hover:bg-p-70 duration-200 h-full">
                             <img
                                 class="h-44"
                                 src="{{ asset('frontend/business-case.png') }}"
                                 alt="Business Plan"
                             >
-                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
+                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500 lg:text-2xl">
                                 Business Plan
                             </h3>
                             <p class="scroll-m-20 text-md font-medium tracking-tight text-center">
                                 Proposal dan presentasi yang berisi perencanaan bisnis
                             </p>
-
-                            <a href="{{ url('/home') }}">
-                                <button class="p-3 font-sans font-semibold text-xs rounded-full">
-                                    Lebih Lanjut
-                                </button>
-                            </a>
                         </div>
+                    </a>
 
-                        <div class="carousel-item bg-p-100 rounded-2xl flex flex-col items-center justify-between p-4 hover:scale-110 duration-200 h-96 m-0">
+                    <a href="{{ url('/home') }}">
+                        <div class="bg-p-100 rounded-2xl flex flex-col justify-between items-center p-4 hover:scale-110 hover:bg-p-70 duration-200 h-full">
                             <img
                                 class="h-44"
                                 src="{{ asset('frontend/web-dev.png') }}"
                                 alt="Web Development"
                             >
-                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
+                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500 lg:text-2xl">
                                 Web Development
                             </h3>
                             <p class="scroll-m-20 text-md font-medium tracking-tight text-center">
                                 Berkompetisi untuk mengembangkan suatu website yang berkaitan dengan tema dan subtema kegiatan I/O Festival 2024
                             </p>
-
-                            <a href="{{ url('/home') }}">
-                                <button class="p-3 font-sans font-semibold text-xs rounded-full">
-                                    Lebih Lanjut
-                                </button>
-                            </a>
                         </div>
+                    </a>
 
-                        <div class="carousel-item bg-p-100 rounded-2xl flex flex-col items-center justify-between p-4 hover:scale-110 duration-200 h-96 m-0">
+                    <a href="{{ url('/home') }}">
+                        <div class="bg-p-100 rounded-2xl flex flex-col justify-between items-center p-4 hover:scale-110 hover:bg-p-70 duration-200 h-full">
                             <img
                                 class="h-44"
                                 src="{{ asset('frontend/ui-ux.png') }}"
                                 alt="UI/UX Design"
                             >
-                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
+                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500 lg:text-2xl">
                                 UI/UX Design
                             </h3>
                             <p class="scroll-m-20 text-md font-medium tracking-tight text-center">
                                 Desain antarmuka sistem ataupun produk berbasis Android/IOS yang berorientasi pada kenyamanan dan kemudahan pengguna
                             </p>
-
-                            <a href="{{ url('/home') }}">
-                                <button class="p-3 font-sans font-semibold text-xs rounded-full">
-                                    Lebih Lanjut
-                                </button>
-                            </a>
                         </div>
+                    </a>
 
-                        <div class="carousel-item bg-p-100 rounded-2xl flex flex-col items-center justify-between p-4 hover:scale-110 duration-200 h-96 m-0">
+                    <a href="{{ url('/home') }}">
+                        <div class="bg-p-100 rounded-2xl flex flex-col justify-between items-center p-4 hover:scale-110 hover:bg-p-70 duration-200 h-full">
                             <img
                                 class="h-44"
                                 src="{{ asset('frontend/game-dev.png') }}"
                                 alt="Game Development"
                             >
-                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500">
+                            <h3 class="scroll-m-20 text-xl font-extrabold tracking-tight text-white group-hover:bg-green-500 lg:text-2xl">
                                 Game Development
                             </h3>
                             <p class="scroll-m-20 text-md font-medium tracking-tight text-center">
                                 Berkompetisi dan pengembangan berinovasi industri game yang berkaitan dengan tema dan subtema kegiatan I/O Festival 2024
                             </p>
-
-                            <a href="{{ url('/home') }}">
-                                <button class="p-3 font-sans font-semibold text-xs rounded-full">
-                                    Lebih Lanjut
-                                </button>
-                            </a>
                         </div>
-                    </div>
+                    </a>
+
                 </div>
             </div>
 
             <!-- Sponsors Section -->
             <div id="sponsors" class="flex flex-col items-center justify-center gap-20 w-full h-screen">
-                <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight mb-10 border-b pb-2">
+                <h2 class="scroll-m-20 text-2xl sm:text-4xl font-extrabold tracking-tight mb-10 border-b pb-2">
                     Sponsors & Media Partners
                 </h2>
 
             </div>
 
             <!-- Talk Show Section -->
-            <div id="talks" class="flex flex-col items-center justify-center gap-10 w-full h-screen px-52">
-                <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight border-b pb-2">
+            <div id="talks" class="flex flex-col items-center justify-center gap-2 sm:gap-10 w-full h-screen px-0 sm:px-52">
+                <h2 class="scroll-m-20 text-2xl sm:text-4xl font-extrabold tracking-tight border-b pb-2 md:mb-4">
                     Talk Show List
                 </h2>
 
-                <div class="flex gap-20 w-full justify-center px-12">
+                <div class="flex flex-col sm:gap-2 md:gap-20 sm:flex-row w-full justify-center sm:px-12 lg:px-64">
                     <div class="flex flex-col items-center p-4 backdrop-blur-xl hover:backdrop-blur-3xl duration-500 rounded-lg border-1 flex-1">
                         <img
                             class="w-auto"
                             src="{{ asset('/frontend/talkshow1.jpg') }}"
                             alt="main-logo"
                         >
-                        <h3 class="mb-2 text-2xl font-semibold tracking-tight">
+                        <h3 class="mb-2 text-lg sm:text-2xl font-semibold tracking-tight">
                             Business Talkshow
                         </h3>
 
                         <div>
-                            <h4 class="scroll-m-20 text-lg font-semibold tracking-tight">
+                            <h4 class="scroll-m-20 text-sm sm:text-lg font-semibold tracking-tight">
                                 Date: 29 April 2024
                             </h4>
-                            <h4 class="scroll-m-20 text-lg font-semibold tracking-tight">
+                            <h4 class="scroll-m-20 text-sm sm:text-lg font-semibold tracking-tight">
                                 Guest: Michelle Monrow & Daniel Johnson
                             </h4>
                         </div>
@@ -280,15 +225,15 @@
                             src="{{ asset('/frontend/talkshow2.jpg') }}"
                             alt="main-logo"
                         >
-                        <h3 class="mb-2 text-2xl font-semibold tracking-tight">
+                        <h3 class="mb-2 text-lg sm:text-2xl font-semibold tracking-tight">
                             Indo Comptech
                         </h3>
 
                         <div>
-                            <h4 class="scroll-m-20 text-lg font-semibold tracking-tight">
+                            <h4 class="scroll-m-20 text-sm sm:text-lg font-semibold tracking-tight">
                                 Date: 29 April 2024
                             </h4>
-                            <h4 class="scroll-m-20 text-lg font-semibold tracking-tight">
+                            <h4 class="scroll-m-20 text-sm sm:text-lg font-semibold tracking-tight">
                                 Guest: Bill Gates
                             </h4>
                         </div>
@@ -301,24 +246,24 @@
 
         <!-- Footer -->
         <div class="bg-db-60 w-full px-8 py-2">
-            <div class="flex items-center justify-between">
+            <div class="flex flex-col sm:flex-row items-center justify-between">
                 <div>
                     <a href="#hero">
                         <img
-                            class="h-24"
+                            class="h-16 sm:h-24 aspect-auto"
                             src="{{ asset('frontend/logo.png') }}"
                             alt="logo"
                         >
                     </a>
 
-                    <h2 class="scroll-m-20 text-3xl font-extrabold tracking-tight text-white mb-2">
+                    <h2 class="scroll-m-20 hidden sm:block text-3xl font-extrabold tracking-tight text-white mb-2">
                         TechSphere
                     </h2>
-                    <h3 class="scroll-m-20 text-xl font-bold tracking-tight text-white mb-4">
+                    <h3 class="scroll-m-20 hidden sm:block text-xl font-bold tracking-tight text-white mb-4">
                         Unleash Your Creativity, Expand Your Journey
                     </h3>
 
-                    <div class="flex gap-12">
+                    <div class="flex gap-12 mb-2">
                         <a href='#' class="duration-300 text-db-40 hover:brightness-200">
                             Privacy & Policy
                         </a>
@@ -333,7 +278,7 @@
                 </div>
 
                 <div class="flex flex-col items-end gap-4">
-                    <div class="bg-db-50 h-12 flex gap-4 w-auto p-2">
+                    <div class="bg-db-50 h-10 sm:h-12 flex gap-4 w-auto p-2">
                         <!-- Facebook -->
                         <svg class="text-db-30 h-full hover:brightness-200 duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill='currentColor' d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
 
@@ -372,7 +317,7 @@
                 </div>
 
             </div>
-            <h3 class="scroll-m-20 text-xl font-semibold tracking-tight text-center mt-5">
+            <h3 class="scroll-m-20 text-base sm:text-xl font-semibold tracking-tight text-center mt-5">
                 © IO Fest 2024. All Rights Reserved.
             </h3>
 
