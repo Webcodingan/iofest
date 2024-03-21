@@ -5,152 +5,238 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pages | Register</title>
+    <title>Register</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <!-- TailwindCSS -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Favicons -->
-    <link href="{{ asset('backend/assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('backend/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('frontend/icon.png') }}" rel="icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('backend/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
+    <!-- Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: white;
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-db-100 h-screen w-screen overflow-hidden">
+    <img
+        class="object-cover w-full h-full fixed z-[-100] bottom-0"
+        src="{{ asset('/frontend/bg.png') }}"
+        alt="background-image"
+    >
+    <main class="flex gap-24 justify-center py-20 px-44 items-center">
+        <a href="/">
+            <img
+                class="w-[450px] shrink grow-0 hidden lg:block"
+                src="{{ asset('/auth/logo-text.png') }}"
+                alt="IO Fest Icon"
+            >
+        </a>
+        <div class="py-10 px-12 duration-500 hover:backdrop-blur bg-white bg-opacity-10 text-white shrink-0 min-w-[300px] max-w-[500px]">
+            <h3 class="scroll-m-20 text-3xl font-black tracking-tight">
+                Create an Account
+            </h3>
 
-    <main>
-        <div class="container">
+            <p class="mb-3">Please, Welcome to I/O Festival!</p>
 
-            <section
-                class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <form
+                class="flex flex-col gap-2"
+                novalidate
+                action="{{ route('register') }}"
+                method="POST">
+                @csrf
+                <div class="flex flex-col gap-2 mb-0">
+                    <div class="flex flex-col">
+                        <input
+                            class="bg-white bg-opacity-10 font-bold text-white py-1 px-2 w-full focus:outline-none "
+                            type="text"
+                            name="username"
+                            placeholder="Username"
+                            value=""
+                        >
+                        <span class="self-end text-red-600 font-extrabold text-sm h-6">
+                        </span>
+                    </div>
 
-                            <div class="d-flex justify-content-center py-4">
-                                <a href="{{ route('register') }}" class="logo d-flex align-items-center w-auto">
-                                    <img src="{{ asset('backend/assets/img/logo.png') }}" alt="">
-                                    <span class="d-none d-lg-block">I/O Fest</span>
-                                </a>
-                            </div><!-- End Logo -->
-
-                            <div class="card mb-3">
-
-                                <div class="card-body">
-
-                                    <div class="pt-1 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                                    </div>
-
-                                    <form class="row g-3 needs-validation" novalidate action="{{ route('register') }}"
-                                        method="post">
-                                        @csrf
-                                        <div class="col-12">
-                                            <label for="name" class="form-label">Your Name</label>
-                                            <input type="text" name="name"
-                                                class="form-control form-control-user @error('name') is-invalid @enderror"
-                                                id="name" placeholder="Full name" required>
-                                            <div class="invalid-feedback">Please, enter your name!</div>
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label for="email" class="form-label">Your Email</label>
-                                            <input type="email" name="email"
-                                                class="form-control orm-control-user @error('email') is-invalid @enderror"
-                                                id="email" placeholder="Email address" required>
-                                            <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password" name="password"
-                                                class="form-control form-control-user @error('password') is-invalid @enderror"
-                                                id="password" placeholder="Password" required>
-                                            <div class="invalid-feedback">Please enter your password!</div>
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="password-confirm" placeholder="Retype password" required
-                                                name="password_confirmation">
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" name="terms" type="checkbox"
-                                                    value="" id="acceptTerms" required>
-                                                <label class="form-check-label" for="acceptTerms">I agree and accept
-                                                    the
-                                                    terms and conditions</label>
-                                                <div class="invalid-feedback">You must agree before submitting.</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-primary w-100" type="submit">Create
-                                                Account</button>
-                                        </div>
-                                        <div class="col-12">
-                                            <p class="small mb-0">Already have an account? <a href="/login">Log
-                                                    in</a>
-                                            </p>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="flex flex-col">
+                        <input
+                            class="bg-white bg-opacity-10 font-bold text-white py-1 px-2 w-full focus:outline-none "
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            pattern="^\S+@\S+\.\S+$"
+                            value=""
+                        >
+                        <span class="self-end text-red-600 font-extrabold text-sm h-6">
+                        </span>
                     </div>
                 </div>
-            </section>
+
+                <div class="flex flex-col gap-2">
+                    <input
+                        class="bg-white bg-opacity-10 font-bold text-white py-1 px-2 w-full focus:outline-none "
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value=""
+                    >
+
+                    <input
+                        class="bg-white bg-opacity-10 font-bold text-white py-1 px-2 w-full focus:outline-none "
+                        type="password"
+                        name="confirm-password"
+                        placeholder="Confirm Password"
+                        value=""
+                    >
+
+                    <span class="self-end text-red-600 font-extrabold text-sm h-6">
+                    </span>
+                </div>
+
+                <div class="form-check">
+                    <input 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        name="remember"
+                        value="true" 
+                        id="acceptTerms"
+                        {{ old('remember') ? 'checked' : '' }}>
+                    <label 
+                        class="font-semibold" 
+                        for="acceptTerms"
+                    >
+                        I agree and accept the terms and conditions
+                    </label>
+                </div>
+
+                <button 
+                    id="create-account"
+                    class="login-btn rounded-lg bg-b-vibrant p-2 font-semibold hover:bg-opacity-70 active:bg-opacity-60 duration-300 disabled:bg-b-30" 
+                    type="submit"
+                    disabled
+                >
+                    Create Account
+                </button>
+
+                <div class="flex flex-col gap-2 items-center">
+                    <p>
+                        Already have an account? 
+                        <a class="font-semibold hover:text-b-10 duration-200" href="/login">
+                            Login
+                        </a>
+                    </p>
+                </div>
+
+            </form>
 
         </div>
-    </main><!-- End #main -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('backend/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/chart.js/chart.umd.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/echarts/echarts.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/quill/quill.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/php-email-form/validate.js') }}"></script>
+    </main>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
+
+    <script>
+        const usernameInput = document.querySelector('input[name="username"]');
+        const emailInput = document.querySelector('input[name="email"]');
+        const passInput = document.querySelector('input[name="password"]');
+        const confirmPassInput = document.querySelector('input[name="confirm-password"]');
+        const termsCondition = document.querySelector('#acceptTerms');
+        const registerBtn = document.querySelector('#create-account');
+        registerBtn.disabled = true;
+
+        const usernameLabel = document.querySelector('input[name="username"] + span');
+        const emailLabel = document.querySelector('input[name="email"] + span');
+        const passLabel = document.querySelector('input[name="confirm-password"] + span');
+
+        function setButtonStatus() {
+            const user = validUsername();
+            const email = validEmail();
+            const pass = validPassword();
+            const agree = termsCondition.checked;
+
+            if (user && email && pass && agree)
+                registerBtn.disabled = false;
+            else 
+                registerBtn.disabled = true;
+        }
+
+        function validUsername() {
+            const empty = usernameInput.value === '';
+            const validLength = usernameInput.value.length >= 8;
+
+            const noSpace = usernameInput.value !== '' 
+                && !/\s/g.test(usernameInput.value);
+
+            if (empty) {
+                usernameLabel.textContent = '';
+            } else if (!validLength) {
+                usernameLabel.textContent = 'At least 8 characters.';
+            } else if (!noSpace) {
+                usernameLabel.textContent = 'Must not have white space.';
+            } else {
+                usernameLabel.textContent = '';
+                return true;
+            }
+
+            return false;
+        }
+        
+        function validEmail() {
+            const empty = emailInput.value === '';
+            const valid = emailInput.checkValidity();
+
+            if (empty) {
+                emailLabel.textContent = '';
+            } else if (valid) {
+                emailLabel.textContent = '';
+                return true;
+            } else {
+                emailLabel.textContent = 'Invalid Email.'
+            }
+
+            return false;
+        }
+
+        function validPassword() {
+            const empty = passInput.value === ''
+                || passInput.value === null;
+
+            const validLength = passInput.value.length >= 8;
+
+            const validConfirm = 
+                passInput.value === confirmPassInput.value;
+
+            if (empty) {
+                passLabel.textContent = '';
+            } else if (!validLength) {
+                passLabel.textContent = 'At least 8 characters.';
+            } else if (!validConfirm && confirmPassInput.value !== '') {
+                passLabel.textContent = 'Password does not match.';
+            } else {
+                passLabel.textContent = '';
+                return true;
+            }
+
+            return false;
+        }
+
+        const inputs = [usernameInput, emailInput, passInput, confirmPassInput, termsCondition];
+
+        inputs.forEach(item => item.addEventListener('input', setButtonStatus));
+
+    </script>
 
 </body>
 
